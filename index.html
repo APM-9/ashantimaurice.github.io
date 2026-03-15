@@ -51,6 +51,27 @@ padding:30px;
 }
 
 </style>
+.carousel {
+overflow: hidden;
+width: 100%;
+}
+
+.carousel-track {
+display: flex;
+width: max-content;
+animation: scroll 20s linear infinite;
+}
+
+.carousel img {
+height: 250px;
+margin-right: 20px;
+border-radius: 10px;
+}
+
+@keyframes scroll {
+0% { transform: translateX(100%); }
+100% { transform: translateX(-100%); }
+}
 
 </head>
 
@@ -91,15 +112,17 @@ padding:30px;
 
 <h2>Training</h2>
 
-<img src="ddwq1_1.28.1.jpeg" width="90%">
+<h2>Training</h2>
 
-<br><br>
+<div class="carousel">
+<div class="carousel-track">
 
-<img src="IMG_2008.jpeg" width="90%">
+<img src="ddwq1_1.28.1.jpeg">
+<img src="IMG_2008.jpeg">
+<img src="IMG_1166.jpeg">
 
-<br><br>
-
-<img src="IMG_1166.jpeg" width="90%">
+</div>
+</div>
 
 </section>
 <p>March 28</p>
