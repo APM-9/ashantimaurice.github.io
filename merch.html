@@ -8,7 +8,7 @@
 
 body{
 font-family:Arial;
-background-image:url('925B0E92-9FD4-4AB5-9D5C-236852A878BB.png');
+background-image:url('5D441496-13DB-4FF1-ADF1-2E22804CB3B6.png');
 background-size:cover;
 background-position:center;
 background-repeat:no-repeat;
@@ -102,13 +102,30 @@ font-weight:bold;
 font-size:18px;
 }
 
+/* NEW TITLE + COUNTDOWN STYLES */
+
+.merch-title{
+color:white;
+text-shadow:2px 2px 6px black;
+}
+
+.countdown-title{
+color:white;
+text-shadow:2px 2px 6px black;
+}
+
+.countdown-timer{
+color:#ff2a2a;
+font-size:28px;
+font-weight:bold;
+text-shadow:2px 2px 6px black;
+}
+
 footer{
 margin-top:auto;
 padding:30px;
 background:black;
 }
-
-/* buyer popup */
 
 #buyer-popup{
 position:fixed;
@@ -146,11 +163,11 @@ font-size:14px;
 
 <section>
 
-<h1>Official Fight Merch</h1>
+<h1 class="merch-title">Official Fight Merch</h1>
 
-<h2>Fight Countdown</h2>
+<h2 class="countdown-title">Fight Countdown</h2>
 
-<h3 id="countdown"></h3>
+<h3 id="countdown" class="countdown-timer"></h3>
 
 <div class="product">
 
@@ -199,17 +216,11 @@ Only 36 shirts available from this fight camp
 
 <p>Help support my training, travel, and fight preparation.</p>
 
-<a class="support-button" href="https://cash.app/$AshantiMaurice">
-Support via Cash App
-</a>
+<a class="support-button" href="https://cash.app/$AshantiMaurice">Support via Cash App</a>
 
-<a class="support-button" href="https://venmo.com/u/Ashanti-Maurice">
-Support via Venmo
-</a>
+<a class="support-button" href="https://venmo.com/u/Ashanti-Maurice">Support via Venmo</a>
 
-<a class="support-button" href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQVNIQU5USSIsImFjdGlvbiI6InBheW1lbnQiLCJ0b2tlbiI6IjczMjMwMDA2NzUifQ==">
-Support via Zelle
-</a>
+<a class="support-button" href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQVNIQU5USSIsImFjdGlvbiI6InBheW1lbnQiLCJ0b2tlbiI6IjczMjMwMDA2NzUifQ==">Support via Zelle</a>
 
 </div>
 
@@ -244,7 +255,7 @@ days + " days " + hours + " hours " + minutes + " minutes";
 },1000);
 
 
-/* fake buyer notification */
+/* buyer popup */
 
 var buyers = [
 "Mike from New Jersey bought a Fight Camp Shirt",
