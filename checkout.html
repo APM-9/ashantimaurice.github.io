@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Checkout | Ashanti Maurice Merch</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#111;
+color:white;
+text-align:center;
+margin:0;
+}
+
+header{
+background:black;
+padding:40px;
+}
+
+.checkout-box{
+max-width:500px;
+margin:auto;
+padding:40px;
+}
+
+.summary{
+background:#222;
+padding:25px;
+border-radius:8px;
+margin-bottom:30px;
+}
+
+.total{
+font-size:24px;
+color:#ff2a2a;
+margin-top:15px;
+font-weight:bold;
+}
+
+.pay-button{
+display:block;
+margin:15px auto;
+padding:18px;
+width:80%;
+background:#ff2a2a;
+color:white;
+text-decoration:none;
+border-radius:6px;
+font-size:20px;
+font-weight:bold;
+}
+
+.instructions{
+margin-top:30px;
+line-height:1.6;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Ashanti Maurice</h1>
+<p>Fight Camp Merch Checkout</p>
+
+</header>
+
+<div class="checkout-box">
+
+<h2>Your Order</h2>
+
+<div class="summary">
+
+<p id="shirt"></p>
+<p id="type"></p>
+<p id="size"></p>
+<p id="qty"></p>
+
+<div class="total" id="total"></div>
+
+</div>
+
+<h2>Choose Payment</h2>
+
+<a class="pay-button" href="https://cash.app/$AshantiMaurice">
+Pay with Cash App
+</a>
+
+<a class="pay-button" href="https://venmo.com/u/Ashanti-Maurice">
+Pay with Venmo
+</a>
+
+<a class="pay-button" href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQVNIQU5USSIsImFjdGlvbiI6InBheW1lbnQiLCJ0b2tlbiI6IjczMjMwMDA2NzUifQ==">
+Pay with Zelle
+</a>
+
+<div class="instructions">
+
+<p style="color:#ff2a2a;font-weight:bold;">
+After payment please email your order details
+</p>
+
+<p>
+
+Name<br>
+Shipping Address<br>
+Shirt Type<br>
+Size<br>
+Quantity<br>
+Color
+
+</p>
+
+<p>Email: AMaurice_94@yahoo.com</p>
+
+</div>
+
+</div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+let shirt = params.get("shirt");
+let type = params.get("type");
+let size = params.get("size");
+let qty = params.get("qty");
+
+let price = 0;
+
+if(type==="short"){price=40;}
+if(type==="long"){price=50;}
+
+let total = price * qty;
+
+document.getElementById("shirt").innerHTML = "Product: " + shirt;
+document.getElementById("type").innerHTML = "Type: " + type + " sleeve";
+document.getElementById("size").innerHTML = "Size: " + size;
+document.getElementById("qty").innerHTML = "Quantity: " + qty;
+
+document.getElementById("total").innerHTML = "Total: $" + total;
+
+</script>
+
+</body>
+</html>
