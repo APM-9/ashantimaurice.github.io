@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Black Fight Camp Shirt</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#111;
+color:white;
+text-align:center;
+margin:0;
+}
+
+header{
+background:black;
+padding:40px;
+}
+
+nav a{
+color:#ff2a2a;
+margin:15px;
+text-decoration:none;
+font-size:18px;
+}
+
+.product{
+max-width:500px;
+margin:auto;
+padding:40px;
+}
+
+.product img{
+width:100%;
+border-radius:10px;
+}
+
+.size-box{
+background:#222;
+margin:10px;
+padding:12px;
+border-radius:6px;
+cursor:pointer;
+transition:0.2s;
+}
+
+.size-box:hover{
+background:#ff2a2a;
+}
+
+.buy-button{
+display:inline-block;
+margin-top:25px;
+padding:15px 30px;
+background:#ff2a2a;
+color:white;
+text-decoration:none;
+border-radius:6px;
+font-weight:bold;
+}
+
+#selected-size{
+margin-top:15px;
+font-weight:bold;
+color:#ff2a2a;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Ashanti Maurice</h1>
+
+<nav>
+
+<a href="index.html">Home</a>
+<a href="coaching.html">Coaching</a>
+<a href="fights.html">Fights</a>
+<a href="merch.html">Merch</a>
+<a href="contact.html">Contact</a>
+
+</nav>
+
+</header>
+
+<div class="product">
+
+<h2>Black Fight Camp Shirt</h2>
+
+<img src="black-shirt-photo.jpeg">
+
+<p>Short Sleeve $40</p>
+<p>Long Sleeve $50</p>
+
+<h3>Select Size</h3>
+
+<div class="size-box" onclick="selectSize('M',1)">
+M — <span id="stock-M">1</span> left
+</div>
+
+<div class="size-box" onclick="selectSize('L',2)">
+L — <span id="stock-L">2</span> left
+</div>
+
+<div class="size-box" onclick="selectSize('XL',3)">
+XL — <span id="stock-XL">3</span> left
+</div>
+
+<p id="selected-size"></p>
+
+<a class="buy-button" onclick="checkout()">Buy This Shirt</a>
+
+<p style="margin-top:25px;color:#ff2a2a;font-weight:bold;">
+Limited fight camp release — once sold out it will not be restocked.
+</p>
+
+<p style="margin-top:20px;">
+After payment please email your order details:
+</p>
+
+<p>
+Name<br>
+Shipping Address<br>
+Size<br>
+Color (Mocha)
+</p>
+
+<p>Email: AMaurice_94@yahoo.com</p>
+
+</div>
+
+<script>
+
+let chosenSize = null;
+
+function selectSize(size,stock){
+
+if(stock <= 0){
+
+alert("This size is sold out");
+
+return;
+
+}
+
+chosenSize = size;
+
+document.getElementById("selected-size").innerHTML =
+"Selected Size: " + size;
+
+}
+
+function checkout(){
+
+if(chosenSize === null){
+
+alert("Please select a size first");
+
+return;
+
+}
+
+window.location.href="checkout-mocha.html";
+
+}
+
+</script>
+
+</body>
+</html>
