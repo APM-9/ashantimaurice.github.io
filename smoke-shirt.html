@@ -37,17 +37,15 @@ width:100%;
 border-radius:10px;
 }
 
-.size-box{
-background:#222;
-margin:10px;
+.dropdown{
+margin:20px auto;
+width:80%;
 padding:12px;
+font-size:16px;
 border-radius:6px;
-cursor:pointer;
-transition:0.2s;
-}
-
-.size-box:hover{
-background:#ff2a2a;
+border:none;
+background:#222;
+color:white;
 }
 
 .buy-button{
@@ -59,10 +57,11 @@ color:white;
 text-decoration:none;
 border-radius:6px;
 font-weight:bold;
+cursor:pointer;
 }
 
-#selected-size{
-margin-top:15px;
+#selection{
+margin-top:20px;
 font-weight:bold;
 color:#ff2a2a;
 }
@@ -98,21 +97,24 @@ color:#ff2a2a;
 <p>Short Sleeve $40</p>
 <p>Long Sleeve $50</p>
 
+<h3>Select Shirt Type</h3>
+
+<select id="shirtType" class="dropdown">
+<option value="">Choose Type</option>
+<option value="Short Sleeve">Short Sleeve</option>
+<option value="Long Sleeve">Long Sleeve</option>
+</select>
+
 <h3>Select Size</h3>
 
-<div class="size-box" onclick="selectSize('M',1)">
-M — <span id="stock-M">1</span> left
-</div>
+<select id="shirtSize" class="dropdown">
+<option value="">Choose Size</option>
+<option value="M">Medium — 1 left</option>
+<option value="L">Large — 2 left</option>
+<option value="XL">XL — 3 left</option>
+</select>
 
-<div class="size-box" onclick="selectSize('L',2)">
-L — <span id="stock-L">2</span> left
-</div>
-
-<div class="size-box" onclick="selectSize('XL',3)">
-XL — <span id="stock-XL">3</span> left
-</div>
-
-<p id="selected-size"></p>
+<p id="selection"></p>
 
 <a class="buy-button" onclick="checkout()">Buy This Shirt</a>
 
@@ -128,7 +130,7 @@ After payment please email your order details:
 Name<br>
 Shipping Address<br>
 Size<br>
-Color (Mocha)
+Color (Smoke)
 </p>
 
 <p>Email: AMaurice_94@yahoo.com</p>
@@ -137,36 +139,23 @@ Color (Mocha)
 
 <script>
 
-let chosenSize = null;
-
-function selectSize(size,stock){
-
-if(stock <= 0){
-
-alert("This size is sold out");
-
-return;
-
-}
-
-chosenSize = size;
-
-document.getElementById("selected-size").innerHTML =
-"Selected Size: " + size;
-
-}
-
 function checkout(){
 
-if(chosenSize === null){
+let type = document.getElementById("shirtType").value;
+let size = document.getElementById("shirtSize").value;
 
-alert("Please select a size first");
+if(type === "" || size === ""){
+
+alert("Please select shirt type and size");
 
 return;
 
 }
 
-window.location.href="checkout-mocha.html";
+document.getElementById("selection").innerHTML =
+"Selected: " + type + " / Size " + size;
+
+window.location.href="checkout-smoke.html";
 
 }
 
