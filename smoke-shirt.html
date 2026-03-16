@@ -97,40 +97,34 @@ margin-top:30px;
 
 <h2>Smoke Fight Camp Shirt</h2>
 
-
 <div class="shirt-section">
-
 <h3>Short Sleeve — $40</h3>
-
 <img src="IMG_1237.jpeg">
-
 </div>
-
 
 <div class="shirt-section">
-
 <h3>Long Sleeve — $50</h3>
-
 <img src="IMG_1227.jpeg">
-
 </div>
-
 
 <h3>Select Shirt Type</h3>
 
-<select id="shirtType" class="dropdown">
+<select id="shirtType" class="dropdown" onchange="updateSizes()">
 <option value="">Choose Type</option>
-<option value="Short Sleeve">Short Sleeve</option>
-<option value="Long Sleeve">Long Sleeve</option>
+<option value="short">Short Sleeve</option>
+<option value="long">Long Sleeve</option>
 </select>
 
 <h3>Select Size</h3>
 
-<select id="shirtSize" class="dropdown">
-<option value="">Choose Size</option>
-<option value="M">Medium — 2 left</option>
-<option value="L">Large — 2 left</option>
-<option value="XL">XL — 3 left</option>
+<select id="shirtSize" class="dropdown" onchange="updateQuantity()">
+<option value="">Select shirt type first</option>
+</select>
+
+<h3>Quantity</h3>
+
+<select id="quantity" class="dropdown">
+<option value="">Select size first</option>
 </select>
 
 <p id="selection"></p>
@@ -158,21 +152,73 @@ Color (Smoke)
 
 <script>
 
+const inventory = {
+
+long:{
+M:2,
+L:2
+},
+
+short:{
+L:1,
+XL:1
+}
+
+};
+
+function updateSizes(){
+
+let type = document.getElementById("shirtType").value;
+let sizeDropdown = document.getElementById("shirtSize");
+
+sizeDropdown.innerHTML = "<option value=''>Choose Size</option>";
+
+for(let size in inventory[type]){
+
+let stock = inventory[type][size];
+
+sizeDropdown.innerHTML += `<option value="${size}">${size} — ${stock} left</option>`;
+
+}
+
+document.getElementById("quantity").innerHTML = "<option>Select size first</option>";
+
+}
+
+function updateQuantity(){
+
+let type = document.getElementById("shirtType").value;
+let size = document.getElementById("shirtSize").value;
+let qtyDropdown = document.getElementById("quantity");
+
+qtyDropdown.innerHTML="";
+
+let max = inventory[type][size];
+
+for(let i=1;i<=max;i++){
+
+qtyDropdown.innerHTML += `<option value="${i}">${i}</option>`;
+
+}
+
+}
+
 function checkout(){
 
 let type = document.getElementById("shirtType").value;
 let size = document.getElementById("shirtSize").value;
+let qty = document.getElementById("quantity").value;
 
-if(type === "" || size === ""){
+if(type==="" || size==="" || qty===""){
 
-alert("Please select shirt type and size");
+alert("Please select shirt type, size, and quantity");
 
 return;
 
 }
 
 document.getElementById("selection").innerHTML =
-"Selected: " + type + " / Size " + size;
+"Selected: "+qty+" "+type+" sleeve / Size "+size;
 
 window.location.href="checkout-smoke.html";
 
