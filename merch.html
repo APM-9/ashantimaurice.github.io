@@ -108,6 +108,19 @@ padding:30px;
 background:black;
 }
 
+/* buyer popup */
+
+#buyer-popup{
+position:fixed;
+bottom:20px;
+left:20px;
+background:black;
+padding:15px 20px;
+border-radius:8px;
+display:none;
+font-size:14px;
+}
+
 </style>
 
 </head>
@@ -135,6 +148,10 @@ background:black;
 
 <h1>Official Fight Merch</h1>
 
+<h2>Fight Countdown</h2>
+
+<h3 id="countdown"></h3>
+
 <div class="product">
 
 <img src="IMG_1042.jpeg">
@@ -148,23 +165,27 @@ background:black;
 Only 36 shirts available from this fight camp
 </div>
 
+<h3>Choose Color</h3>
+
+<p><a href="mocha-shirt.html" class="buy-button">Mocha</a></p>
+<p><a href="cream-shirt.html" class="buy-button">Cream</a></p>
+<p><a href="oatmeal-shirt.html" class="buy-button">Oatmeal</a></p>
+<p><a href="black-shirt.html" class="buy-button">Black</a></p>
+<p><a href="smoke-shirt.html" class="buy-button">Smoke</a></p>
+
 <div class="stock">
 
-<h3>Long Sleeve</h3>
+<h3>Inventory</h3>
 
-<p>XL: 2 Mocha • 1 Oatmeal • 1 Cream • 1 Black</p>
-<p>L: 2 Mocha • 2 Cream • 2 Smoke • 1 Oatmeal</p>
-<p>M: 2 Black • 1 Oatmeal • 2 Cream • 2 Smoke</p>
+<p>Long Sleeve XL: 2 Mocha • 1 Oatmeal • 1 Cream • 1 Black</p>
+<p>Long Sleeve L: 2 Mocha • 2 Cream • 2 Smoke • 1 Oatmeal</p>
+<p>Long Sleeve M: 2 Black • 1 Oatmeal • 2 Cream • 2 Smoke</p>
 
-<h3>Short Sleeve</h3>
-
-<p>XL: 1 Black • 1 Mocha • 1 Cream • 1 Oatmeal • 1 Smoke</p>
-<p>L: 1 Black • 1 Mocha • 2 Cream • 1 Smoke • 2 Oatmeal</p>
-<p>M: 1 Mocha • 1 Cream • 2 Oatmeal • 1 Smoke</p>
+<p>Short Sleeve XL: 1 Black • 1 Mocha • 1 Cream • 1 Oatmeal • 1 Smoke</p>
+<p>Short Sleeve L: 1 Black • 1 Mocha • 2 Cream • 1 Smoke • 2 Oatmeal</p>
+<p>Short Sleeve M: 1 Mocha • 1 Cream • 2 Oatmeal • 1 Smoke</p>
 
 </div>
-
-<a class="buy-button" href="mailto:AMaurice_94@yahoo.com">Order Merch</a>
 
 </div>
 
@@ -178,11 +199,17 @@ Only 36 shirts available from this fight camp
 
 <p>Help support my training, travel, and fight preparation.</p>
 
-<a class="support-button" href="https://cash.app/$AshantiMaurice">Support via Cash App</a>
+<a class="support-button" href="https://cash.app/$AshantiMaurice">
+Support via Cash App
+</a>
 
-<a class="support-button" href="https://venmo.com/u/Ashanti-Maurice">Support via Venmo</a>
+<a class="support-button" href="https://venmo.com/u/Ashanti-Maurice">
+Support via Venmo
+</a>
 
-<a class="support-button" href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQVNIQU5USSIsImFjdGlvbiI6InBheW1lbnQiLCJ0b2tlbiI6IjczMjMwMDA2NzUifQ==">Support via Zelle</a>
+<a class="support-button" href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQVNIQU5USSIsImFjdGlvbiI6InBheW1lbnQiLCJ0b2tlbiI6IjczMjMwMDA2NzUifQ==">
+Support via Zelle
+</a>
 
 </div>
 
@@ -193,6 +220,56 @@ Only 36 shirts available from this fight camp
 <p>© 2026 Ashanti Maurice</p>
 
 </footer>
+
+<div id="buyer-popup"></div>
+
+<script>
+
+/* fight countdown */
+
+var fightDate = new Date("March 28, 2026 19:00:00").getTime();
+
+var x = setInterval(function() {
+
+var now = new Date().getTime();
+var distance = fightDate - now;
+
+var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+document.getElementById("countdown").innerHTML =
+days + " days " + hours + " hours " + minutes + " minutes";
+
+},1000);
+
+
+/* fake buyer notification */
+
+var buyers = [
+"Mike from New Jersey bought a Fight Camp Shirt",
+"Chris from New York bought a Mocha Shirt",
+"Alex from Pennsylvania bought a Cream Shirt",
+"Jordan from Florida supported the fight camp"
+];
+
+function showPopup(){
+
+var popup=document.getElementById("buyer-popup");
+
+popup.innerHTML=buyers[Math.floor(Math.random()*buyers.length)];
+
+popup.style.display="block";
+
+setTimeout(function(){
+popup.style.display="none";
+},4000);
+
+}
+
+setInterval(showPopup,12000);
+
+</script>
 
 </body>
 </html>
