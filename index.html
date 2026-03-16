@@ -114,7 +114,36 @@ border-radius:10px;
 <section>
 
 <h2>Next Fight</h2>
+
 <p>March 28</p>
+
+<h3 id="countdown"></h3>
+
+<script>
+
+var fightDate = new Date("March 28, 2026 19:00:00").getTime();
+
+var x = setInterval(function() {
+
+var now = new Date().getTime();
+
+var distance = fightDate - now;
+
+var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+document.getElementById("countdown").innerHTML =
+days + " days " + hours + " hours " + minutes + " minutes";
+
+if (distance < 0) {
+clearInterval(x);
+document.getElementById("countdown").innerHTML = "Fight Night";
+}
+
+}, 1000);
+
+</script>
 
 </section>
 
