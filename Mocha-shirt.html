@@ -42,6 +42,12 @@ background:#222;
 margin:10px;
 padding:12px;
 border-radius:6px;
+cursor:pointer;
+transition:0.2s;
+}
+
+.size-box:hover{
+background:#ff2a2a;
 }
 
 .buy-button{
@@ -53,6 +59,12 @@ color:white;
 text-decoration:none;
 border-radius:6px;
 font-weight:bold;
+}
+
+#selected-size{
+margin-top:15px;
+font-weight:bold;
+color:#ff2a2a;
 }
 
 </style>
@@ -81,22 +93,71 @@ font-weight:bold;
 
 <h2>Mocha Fight Camp Shirt</h2>
 
-<img src="PUT_MOCHA_SHIRT_PHOTO_HERE.jpeg">
-
-<h3>Available Inventory</h3>
-
-<div class="size-box">XL — 3 available</div>
-<div class="size-box">L — 2 available</div>
-<div class="size-box">M — 1 available</div>
+<img src="ADD_PRODUCT_PHOTO_HERE.jpeg">
 
 <p>Short Sleeve $40</p>
 <p>Long Sleeve $50</p>
 
-<a class="buy-button" href="checkout-mocha.html">
-Buy This Shirt
-</a>
+<h3>Select Size</h3>
+
+<div class="size-box" onclick="selectSize('M',1)">
+M — <span id="stock-M">1</span> left
+</div>
+
+<div class="size-box" onclick="selectSize('L',2)">
+L — <span id="stock-L">2</span> left
+</div>
+
+<div class="size-box" onclick="selectSize('XL',3)">
+XL — <span id="stock-XL">3</span> left
+</div>
+
+<p id="selected-size"></p>
+
+<a class="buy-button" onclick="checkout()">Buy This Shirt</a>
+
+<p style="margin-top:25px;color:#ff2a2a;font-weight:bold;">
+Limited fight camp release — once sold out it will not be restocked.
+</p>
 
 </div>
+
+<script>
+
+let chosenSize = null;
+
+function selectSize(size,stock){
+
+if(stock <= 0){
+
+alert("This size is sold out");
+
+return;
+
+}
+
+chosenSize = size;
+
+document.getElementById("selected-size").innerHTML =
+"Selected Size: " + size;
+
+}
+
+function checkout(){
+
+if(chosenSize === null){
+
+alert("Please select a size first");
+
+return;
+
+}
+
+window.location.href="checkout-mocha.html";
+
+}
+
+</script>
 
 </body>
 </html>
