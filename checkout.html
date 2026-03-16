@@ -20,41 +20,53 @@ padding:40px;
 }
 
 .checkout-box{
-max-width:500px;
+max-width:600px;
 margin:auto;
 padding:40px;
 }
 
-.summary{
-background:#222;
-padding:25px;
-border-radius:8px;
-margin-bottom:30px;
+form{
+display:flex;
+flex-direction:column;
+gap:15px;
 }
 
-.total{
-font-size:24px;
-color:#ff2a2a;
-margin-top:15px;
+input, select, textarea{
+padding:12px;
+border-radius:6px;
+border:none;
+background:#222;
+color:white;
+font-size:16px;
+}
+
+.submit-button{
+margin-top:20px;
+padding:18px;
+background:#ff2a2a;
+color:white;
+border:none;
+border-radius:6px;
+font-size:18px;
 font-weight:bold;
+cursor:pointer;
+}
+
+.payment{
+margin-top:30px;
 }
 
 .pay-button{
 display:block;
-margin:15px auto;
-padding:18px;
+margin:10px auto;
+padding:15px;
 width:80%;
 background:#ff2a2a;
 color:white;
 text-decoration:none;
 border-radius:6px;
-font-size:20px;
+font-size:18px;
 font-weight:bold;
-}
-
-.instructions{
-margin-top:30px;
-line-height:1.6;
 }
 
 </style>
@@ -72,23 +84,49 @@ line-height:1.6;
 
 <div class="checkout-box">
 
-<h2>Your Order</h2>
+<h2>Enter Shipping Details</h2>
 
-<div class="summary">
+<form action="https://formspree.io/f/yourformid" method="POST">
 
-<p id="shirt"></p>
-<p id="type"></p>
-<p id="size"></p>
-<p id="qty"></p>
+<input type="text" name="name" placeholder="Full Name" required>
 
-<div class="total" id="total"></div>
+<input type="text" name="address" placeholder="Shipping Address" required>
 
-</div>
+<input type="text" name="city" placeholder="City" required>
 
-<h2>Choose Payment</h2>
+<input type="text" name="state" placeholder="State" required>
+
+<input type="text" name="zip" placeholder="ZIP Code" required>
+
+<input type="email" name="email" placeholder="Email Address" required>
+
+<input type="tel" name="phone" placeholder="Phone Number" required>
+
+<input type="text" name="product" placeholder="Product Ordered" required>
+
+<input type="text" name="size" placeholder="Size" required>
+
+<input type="number" name="quantity" placeholder="Quantity" required>
+
+<select name="payment_method" required>
+<option value="">Select Payment Method</option>
+<option value="CashApp">CashApp</option>
+<option value="Venmo">Venmo</option>
+<option value="Zelle">Zelle</option>
+</select>
+
+<button class="submit-button" type="submit">
+Submit Order
+</button>
+
+</form>
+
+<div class="payment">
+
+<h2>Send Payment</h2>
 
 <a class="pay-button" href="https://cash.app/$AshantiMaurice">
-Pay with Cash App
+Pay with CashApp
 </a>
 
 <a class="pay-button" href="https://venmo.com/u/Ashanti-Maurice">
@@ -99,53 +137,9 @@ Pay with Venmo
 Pay with Zelle
 </a>
 
-<div class="instructions">
-
-<p style="color:#ff2a2a;font-weight:bold;">
-After payment please email your order details
-</p>
-
-<p>
-
-Name<br>
-Shipping Address<br>
-Shirt Type<br>
-Size<br>
-Quantity<br>
-Color
-
-</p>
-
-<p>Email: AMaurice_94@yahoo.com</p>
-
 </div>
 
 </div>
-
-<script>
-
-const params = new URLSearchParams(window.location.search);
-
-let shirt = params.get("shirt");
-let type = params.get("type");
-let size = params.get("size");
-let qty = params.get("qty");
-
-let price = 0;
-
-if(type==="short"){price=40;}
-if(type==="long"){price=50;}
-
-let total = price * qty;
-
-document.getElementById("shirt").innerHTML = "Product: " + shirt;
-document.getElementById("type").innerHTML = "Type: " + type + " sleeve";
-document.getElementById("size").innerHTML = "Size: " + size;
-document.getElementById("qty").innerHTML = "Quantity: " + qty;
-
-document.getElementById("total").innerHTML = "Total: $" + total;
-
-</script>
 
 </body>
 </html>
