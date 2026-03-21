@@ -20,8 +20,6 @@ display:flex;
 flex-direction:column;
 }
 
-/* HEADER */
-
 header{
 background:black;
 padding:40px;
@@ -33,8 +31,6 @@ margin:15px;
 text-decoration:none;
 font-size:18px;
 }
-
-/* HERO */
 
 .hero{
 padding:60px 20px;
@@ -48,29 +44,21 @@ color:white;
 text-decoration:none;
 }
 
-/* FIGHT SECTION */
-
-.fight-section{
-padding:40px 20px;
+section{
+padding:60px 20px;
 }
 
-.fight-date{
-font-size:22px;
-font-weight:bold;
-color:#ff2a2a;
-margin-bottom:10px;
-}
-
-.countdown{
-font-size:24px;
-font-weight:bold;
-margin-bottom:20px;
+footer{
+margin-top:auto;
+padding:30px;
+background:black;
 }
 
 /* VIDEO */
 
 .video-container{
-max-width:800px;
+width:100%;
+max-width:900px;
 margin:20px auto;
 }
 
@@ -81,10 +69,6 @@ border-radius:10px;
 }
 
 /* CAROUSEL */
-
-section{
-padding:60px 20px;
-}
 
 .carousel{
 overflow:hidden;
@@ -108,14 +92,6 @@ border-radius:10px;
 100% {transform:translateX(-100%);}
 }
 
-/* FOOTER */
-
-footer{
-margin-top:auto;
-padding:30px;
-background:black;
-}
-
 </style>
 
 </head>
@@ -137,7 +113,19 @@ background:black;
 
 </header>
 
-<!-- HERO -->
+<!-- 🔥 FIGHT PROMO VIDEO -->
+
+<div class="video-container">
+
+<iframe 
+src="https://www.youtube.com/embed/n5M3N8kGu3A?autoplay=1&mute=1&controls=0"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
+</div>
+
+<!-- HERO SECTION -->
 
 <div class="hero">
 
@@ -149,27 +137,7 @@ background:black;
 
 </div>
 
-<!-- FIGHT PROMO SECTION -->
-
-<div class="fight-section">
-
-<p class="fight-date">🥊 Next Fight: March 28</p>
-
-<p id="countdown" class="countdown"></p>
-
-<div class="video-container">
-
-<iframe 
-src="https://www.youtube.com/embed/n5M3N8kGu3A"
-frameborder="0"
-allowfullscreen>
-</iframe>
-
-</div>
-
-</div>
-
-<!-- TRAINING -->
+<!-- TRAINING CAROUSEL -->
 
 <section>
 
@@ -192,28 +160,6 @@ allowfullscreen>
 <p>© 2026 Ashanti Maurice</p>
 
 </footer>
-
-<!-- COUNTDOWN SCRIPT -->
-
-<script>
-
-const fightDate = new Date("March 28, 2026 00:00:00").getTime();
-
-setInterval(function(){
-
-let now = new Date().getTime();
-let distance = fightDate - now;
-
-let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-document.getElementById("countdown").innerHTML =
-days + "d " + hours + "h " + minutes + "m";
-
-}, 1000);
-
-</script>
 
 </body>
 </html>
