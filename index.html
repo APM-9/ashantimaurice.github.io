@@ -7,7 +7,7 @@
 
 body{
 font-family:Arial;
-background-image:url('www21_1.10.1.jpeg');
+background-image:url('background.png');
 background-size:cover;
 background-position:center;
 background-repeat:no-repeat;
@@ -46,6 +46,12 @@ padding:15px 30px;
 border-radius:6px;
 color:white;
 text-decoration:none;
+display:inline-block;
+}
+
+.merch-button{
+background:black;
+border:2px solid #ff2a2a;
 }
 
 /* FIGHT SECTION */
@@ -164,6 +170,10 @@ background:black;
 
 <a class="button" href="coaching.html">Apply For Coaching</a>
 
+<br><br>
+
+<a class="button merch-button" href="merch.html">Buy Fight Merch</a>
+
 </div>
 
 <!-- FIGHT PROMO + COUNTDOWN -->
@@ -243,7 +253,7 @@ let distance = fightDate - now;
 
 let days = Math.floor(distance / (1000 * 60 * 60 * 24));
 let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60 * 60));
+let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
 document.getElementById("countdown").innerHTML =
 days + "d " + hours + "h " + minutes + "m";
