@@ -7,7 +7,7 @@
 
 body{
 font-family:Arial;
-background-image:url('www21_1.10.1.jpeg');
+background-image:url('background.png');
 background-size:cover;
 background-position:center;
 background-repeat:no-repeat;
@@ -15,44 +15,97 @@ background-attachment:fixed;
 color:white;
 margin:0;
 text-align:center;
-
-min-height:100vh;
-display:flex;
-flex-direction:column;
 }
+
+/* HEADER */
 
 header{
 background:black;
-padding:40px;
+padding:30px;
 }
 
 nav a{
 color:#ff2a2a;
-margin:15px;
+margin:10px;
 text-decoration:none;
-font-size:18px;
+font-size:16px;
 }
 
-.hero{
-padding:100px 20px;
+/* HERO VIDEO */
+
+.hero-video{
+position:relative;
+width:100%;
+height:90vh;
+overflow:hidden;
 }
 
-.button{
+.hero-video iframe{
+position:absolute;
+top:50%;
+left:50%;
+width:120%;
+height:120%;
+transform:translate(-50%,-50%);
+pointer-events:none;
+}
+
+.hero-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+.hero-title{
+font-size:38px;
+}
+
+.hero-sub{
+font-size:16px;
+margin-bottom:10px;
+}
+
+.fight-date{
+color:#ff2a2a;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.countdown{
+font-size:22px;
+color:#ff2a2a;
+font-weight:bold;
+margin-bottom:20px;
+}
+
+/* BUTTONS */
+
+.hero-button{
 background:#ff2a2a;
-padding:15px 30px;
+padding:12px 25px;
 border-radius:6px;
 color:white;
 text-decoration:none;
+font-weight:bold;
+margin:5px;
 }
+
+.merch-button{
+background:black;
+border:2px solid #ff2a2a;
+}
+
+/* CAROUSEL */
 
 section{
-padding:60px 20px;
-}
-
-footer{
-margin-top:auto;
-padding:30px;
-background:black;
+padding:50px 20px;
 }
 
 .carousel{
@@ -67,8 +120,8 @@ animation:scroll 20s linear infinite;
 }
 
 .carousel img{
-height:250px;
-margin-right:20px;
+height:220px;
+margin-right:15px;
 border-radius:10px;
 }
 
@@ -77,8 +130,31 @@ border-radius:10px;
 100% {transform:translateX(-100%);}
 }
 
+/* SPONSORS */
+
+.sponsors{
+background:black;
+padding:40px 20px;
+}
+
+.sponsor-box{
+border:2px dashed #ff2a2a;
+margin:10px;
+padding:15px;
+display:inline-block;
+color:#ff2a2a;
+font-weight:bold;
+}
+
+/* FOOTER */
+
+footer{
+background:black;
+padding:20px;
+}
+
 </style>
-  
+
 </head>
 
 <body>
@@ -86,66 +162,46 @@ border-radius:10px;
 <header>
 
 <h1>Ashanti Maurice</h1>
-
 <p>Amateur Fighter | Strength Coach</p>
 
 <nav>
-
 <a href="index.html">Home</a>
 <a href="coaching.html">Coaching</a>
 <a href="fights.html">Fights</a>
 <a href="merch.html">Merch</a>
 <a href="contact.html">Contact</a>
-
 </nav>
 
 </header>
 
-<div class="hero">
+<!-- 🔥 HERO VIDEO -->
 
-<h2>Train Like A Fighter</h2>
+<div class="hero-video">
 
-<p>Online strength and conditioning programs.</p>
+<iframe 
+src="https://www.youtube.com/embed/n5M3N8kGu3A?autoplay=1&mute=1&controls=0&loop=1&playlist=n5M3N8kGu3A"
+frameborder="0"
+allowfullscreen>
+</iframe>
 
-<a class="button" href="coaching.html">Apply For Coaching</a>
+<div class="hero-overlay">
+
+<h1 class="hero-title">Ashanti Maurice</h1>
+
+<p class="hero-sub">Amateur Fighter | Strength Coach</p>
+
+<p class="fight-date">🥊 Next Fight: March 28</p>
+
+<p id="countdown" class="countdown"></p>
+
+<a class="hero-button" href="coaching.html">Train With Me</a>
+<a class="hero-button merch-button" href="merch.html">Shop Fight Merch</a>
 
 </div>
 
-<section>
+</div>
 
-<h2>Next Fight</h2>
-
-<p>March 28</p>
-
-<h3 id="countdown"></h3>
-
-<script>
-
-var fightDate = new Date("March 28, 2026 19:00:00").getTime();
-
-var x = setInterval(function() {
-
-var now = new Date().getTime();
-
-var distance = fightDate - now;
-
-var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-document.getElementById("countdown").innerHTML =
-days + " days " + hours + " hours " + minutes + " minutes";
-
-if (distance < 0) {
-clearInterval(x);
-document.getElementById("countdown").innerHTML = "Fight Night";
-}
-
-}, 1000);
-
-</script>
-
-</section>
+<!-- 🖼️ TRAINING -->
 
 <section>
 
@@ -157,17 +213,57 @@ document.getElementById("countdown").innerHTML = "Fight Night";
 <img src="ddwq1_1.28.1.jpeg">
 <img src="IMG_2008.jpeg">
 <img src="IMG_1166.jpeg">
-  
+
 </div>
 </div>
 
 </section>
 
+<!-- 💰 SPONSORS -->
+
+<section class="sponsors">
+
+<h2>Fight Sponsors</h2>
+
+<div class="sponsor-box">Your Brand Here</div>
+<div class="sponsor-box">Your Brand Here</div>
+<div class="sponsor-box">Your Brand Here</div>
+
+<p style="margin-top:20px;">
+Sponsor slots available — $500 per placement
+</p>
+
+<a class="hero-button" href="contact.html">Become A Sponsor</a>
+
+</section>
+
+<!-- FOOTER -->
+
 <footer>
-
 <p>© 2026 Ashanti Maurice</p>
-
 </footer>
+
+<!-- ⏳ COUNTDOWN SCRIPT -->
+
+<script>
+
+const fightDate = new Date("March 28, 2026 00:00:00").getTime();
+
+setInterval(function(){
+
+let now = new Date().getTime();
+let distance = fightDate - now;
+
+let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+document.getElementById("countdown").innerHTML =
+days + "d " + hours + "h " + minutes + "m";
+
+}, 1000);
+
+</script>
 
 </body>
 </html>
