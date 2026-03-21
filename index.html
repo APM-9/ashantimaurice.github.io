@@ -102,6 +102,19 @@ background:black;
 border:2px solid #ff2a2a;
 }
 
+/* SOUND BUTTON */
+
+.sound-button{
+margin-top:10px;
+padding:10px 20px;
+background:black;
+border:2px solid #ff2a2a;
+color:white;
+border-radius:6px;
+cursor:pointer;
+font-weight:bold;
+}
+
 /* CAROUSEL */
 
 section{
@@ -174,13 +187,14 @@ padding:20px;
 
 </header>
 
-<!-- 🔥 HERO VIDEO -->
+<!-- HERO VIDEO -->
 
 <div class="hero-video">
 
-<iframe 
-src="https://www.youtube.com/embed/n5M3N8kGu3A?autoplay=1&mute=1&controls=0&loop=1&playlist=n5M3N8kGu3A"
+<iframe id="fightVideo"
+src="https://www.youtube.com/embed/n5M3N8kGu3A?autoplay=1&mute=1&controls=0&loop=1&playlist=n5M3N8kGu3A&enablejsapi=1"
 frameborder="0"
+allow="autoplay"
 allowfullscreen>
 </iframe>
 
@@ -197,11 +211,15 @@ allowfullscreen>
 <a class="hero-button" href="coaching.html">Train With Me</a>
 <a class="hero-button merch-button" href="merch.html">Shop Fight Merch</a>
 
-</div>
+<button class="sound-button" onclick="toggleSound(event)">
+🔊 Tap for Sound
+</button>
 
 </div>
 
-<!-- 🖼️ TRAINING -->
+</div>
+
+<!-- TRAINING -->
 
 <section>
 
@@ -219,7 +237,7 @@ allowfullscreen>
 
 </section>
 
-<!-- 💰 SPONSORS -->
+<!-- SPONSORS -->
 
 <section class="sponsors">
 
@@ -237,13 +255,11 @@ Sponsor slots available — $500 per placement
 
 </section>
 
-<!-- FOOTER -->
-
 <footer>
 <p>© 2026 Ashanti Maurice</p>
 </footer>
 
-<!-- ⏳ COUNTDOWN SCRIPT -->
+<!-- COUNTDOWN -->
 
 <script>
 
@@ -262,6 +278,35 @@ document.getElementById("countdown").innerHTML =
 days + "d " + hours + "h " + minutes + "m";
 
 }, 1000);
+
+</script>
+
+<!-- YOUTUBE SOUND CONTROL -->
+
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script>
+
+let player;
+let isMuted = true;
+
+function onYouTubeIframeAPIReady(){
+player = new YT.Player('fightVideo');
+}
+
+function toggleSound(e){
+
+if(isMuted){
+player.unMute();
+isMuted = false;
+e.target.innerText = "🔇 Mute";
+}else{
+player.mute();
+isMuted = true;
+e.target.innerText = "🔊 Tap for Sound";
+}
+
+}
 
 </script>
 
