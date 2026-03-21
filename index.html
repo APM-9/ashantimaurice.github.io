@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-<title>Ashanti Maurice | Coaching</title>
+<title>Ashanti Maurice | Fighter</title>
 
 <style>
 
 body{
 font-family:Arial;
-background-image:url('IMG_1166.jpeg');
+background-image:url('background.png');
 background-size:cover;
 background-position:center;
 background-repeat:no-repeat;
@@ -16,31 +15,142 @@ background-attachment:fixed;
 color:white;
 margin:0;
 text-align:center;
-min-height:100vh;
-display:flex;
-flex-direction:column;
 }
+
+/* HEADER */
 
 header{
 background:black;
-padding:40px;
+padding:30px;
 }
 
 nav a{
 color:#ff2a2a;
-margin:15px;
+margin:10px;
 text-decoration:none;
-font-size:18px;
+font-size:16px;
 }
+
+/* HERO VIDEO */
+
+.hero-video{
+position:relative;
+width:100%;
+height:90vh;
+overflow:hidden;
+}
+
+.hero-video iframe{
+position:absolute;
+top:50%;
+left:50%;
+width:120%;
+height:120%;
+transform:translate(-50%,-50%);
+pointer-events:none;
+}
+
+.hero-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+.hero-title{
+font-size:38px;
+}
+
+.hero-sub{
+font-size:16px;
+margin-bottom:10px;
+}
+
+.fight-date{
+color:#ff2a2a;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.countdown{
+font-size:22px;
+color:#ff2a2a;
+font-weight:bold;
+margin-bottom:20px;
+}
+
+/* BUTTONS */
+
+.hero-button{
+background:#ff2a2a;
+padding:12px 25px;
+border-radius:6px;
+color:white;
+text-decoration:none;
+font-weight:bold;
+margin:5px;
+}
+
+.merch-button{
+background:black;
+border:2px solid #ff2a2a;
+}
+
+/* CAROUSEL */
 
 section{
-padding:60px 20px;
+padding:50px 20px;
 }
 
-footer{
-margin-top:auto;
-padding:30px;
+.carousel{
+overflow:hidden;
+width:100%;
+}
+
+.carousel-track{
+display:flex;
+width:max-content;
+animation:scroll 20s linear infinite;
+}
+
+.carousel img{
+height:220px;
+margin-right:15px;
+border-radius:10px;
+}
+
+@keyframes scroll{
+0% {transform:translateX(100%);}
+100% {transform:translateX(-100%);}
+}
+
+/* SPONSORS */
+
+.sponsors{
 background:black;
+padding:40px 20px;
+}
+
+.sponsor-box{
+border:2px dashed #ff2a2a;
+margin:10px;
+padding:15px;
+display:inline-block;
+color:#ff2a2a;
+font-weight:bold;
+}
+
+/* FOOTER */
+
+footer{
+background:black;
+padding:20px;
 }
 
 </style>
@@ -52,42 +162,108 @@ background:black;
 <header>
 
 <h1>Ashanti Maurice</h1>
-
 <p>Amateur Fighter | Strength Coach</p>
 
 <nav>
-
 <a href="index.html">Home</a>
 <a href="coaching.html">Coaching</a>
 <a href="fights.html">Fights</a>
 <a href="merch.html">Merch</a>
 <a href="contact.html">Contact</a>
-
 </nav>
 
 </header>
 
+<!-- 🔥 HERO VIDEO -->
+
+<div class="hero-video">
+
+<iframe 
+src="https://www.youtube.com/embed/n5M3N8kGu3A?autoplay=1&mute=1&controls=0&loop=1&playlist=n5M3N8kGu3A"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
+<div class="hero-overlay">
+
+<h1 class="hero-title">Ashanti Maurice</h1>
+
+<p class="hero-sub">Amateur Fighter | Strength Coach</p>
+
+<p class="fight-date">🥊 Next Fight: March 28</p>
+
+<p id="countdown" class="countdown"></p>
+
+<a class="hero-button" href="coaching.html">Train With Me</a>
+<a class="hero-button merch-button" href="merch.html">Shop Fight Merch</a>
+
+</div>
+
+</div>
+
+<!-- 🖼️ TRAINING -->
+
 <section>
 
-<h1>Online Coaching</h1>
+<h2>Training</h2>
 
-<p>Train directly with me.</p>
+<div class="carousel">
+<div class="carousel-track">
 
-<h2>Programs</h2>
+<img src="ddwq1_1.28.1.jpeg">
+<img src="IMG_2008.jpeg">
+<img src="IMG_1166.jpeg">
 
-<p>Strength & Conditioning</p>
-<p>Fat Loss Coaching</p>
-<p>Fighter Conditioning</p>
-
-<p>Email: AMaurice_94@yahoo.com</p>
+</div>
+</div>
 
 </section>
 
+<!-- 💰 SPONSORS -->
+
+<section class="sponsors">
+
+<h2>Fight Sponsors</h2>
+
+<div class="sponsor-box">Your Brand Here</div>
+<div class="sponsor-box">Your Brand Here</div>
+<div class="sponsor-box">Your Brand Here</div>
+
+<p style="margin-top:20px;">
+Sponsor slots available — $500 per placement
+</p>
+
+<a class="hero-button" href="contact.html">Become A Sponsor</a>
+
+</section>
+
+<!-- FOOTER -->
+
 <footer>
-
 <p>© 2026 Ashanti Maurice</p>
-
 </footer>
+
+<!-- ⏳ COUNTDOWN SCRIPT -->
+
+<script>
+
+const fightDate = new Date("March 28, 2026 00:00:00").getTime();
+
+setInterval(function(){
+
+let now = new Date().getTime();
+let distance = fightDate - now;
+
+let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+document.getElementById("countdown").innerHTML =
+days + "d " + hours + "h " + minutes + "m";
+
+}, 1000);
+
+</script>
 
 </body>
 </html>
