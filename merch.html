@@ -38,7 +38,7 @@ padding:60px 20px;
 }
 
 .product{
-background:rgba(0,0,0,0.8);
+background:rgba(0,0,0,0.85);
 max-width:450px;
 margin:40px auto;
 padding:30px;
@@ -58,7 +58,7 @@ margin-top:10px;
 
 .buy-button{
 display:inline-block;
-margin-top:20px;
+margin-top:15px;
 padding:12px 25px;
 background:#ff2a2a;
 color:white;
@@ -75,14 +75,27 @@ font-weight:bold;
 margin-top:15px;
 }
 
-.stock{
-margin-top:20px;
-font-size:18px;
-line-height:1.6;
+/* TITLE + COUNTDOWN */
+
+.merch-title{
+text-shadow:2px 2px 6px black;
 }
 
+.countdown-title{
+text-shadow:2px 2px 6px black;
+}
+
+.countdown-timer{
+color:#ff2a2a;
+font-size:28px;
+font-weight:bold;
+text-shadow:2px 2px 6px black;
+}
+
+/* SUPPORT */
+
 .support{
-background:rgba(0,0,0,0.8);
+background:rgba(0,0,0,0.85);
 max-width:450px;
 margin:40px auto;
 padding:30px;
@@ -102,30 +115,15 @@ font-weight:bold;
 font-size:18px;
 }
 
-/* NEW TITLE + COUNTDOWN STYLES */
-
-.merch-title{
-color:white;
-text-shadow:2px 2px 6px black;
-}
-
-.countdown-title{
-color:white;
-text-shadow:2px 2px 6px black;
-}
-
-.countdown-timer{
-color:#ff2a2a;
-font-size:28px;
-font-weight:bold;
-text-shadow:2px 2px 6px black;
-}
+/* FOOTER */
 
 footer{
 margin-top:auto;
 padding:30px;
 background:black;
 }
+
+/* POPUP */
 
 #buyer-popup{
 position:fixed;
@@ -179,7 +177,7 @@ font-size:14px;
 <p class="price">Long Sleeve - $50</p>
 
 <div class="counter">
-Only 36 shirts available from this fight camp
+Limited Fight Camp Release — While Supplies Last
 </div>
 
 <h3>Choose Color</h3>
@@ -189,20 +187,6 @@ Only 36 shirts available from this fight camp
 <p><a href="oatmeal-shirt.html" class="buy-button">Oatmeal</a></p>
 <p><a href="black-shirt.html" class="buy-button">Black</a></p>
 <p><a href="smoke-shirt.html" class="buy-button">Smoke</a></p>
-
-<div class="stock">
-
-<h3>Inventory</h3>
-
-<p>Long Sleeve XL: 2 Mocha • 1 Oatmeal • 1 Cream • 1 Black</p>
-<p>Long Sleeve L: 2 Mocha • 2 Cream • 2 Smoke • 1 Oatmeal</p>
-<p>Long Sleeve M: 2 Black • 1 Oatmeal • 2 Cream • 2 Smoke</p>
-
-<p>Short Sleeve XL: 1 Black • 1 Mocha • 1 Cream • 1 Oatmeal • 1 Smoke</p>
-<p>Short Sleeve L: 1 Black • 1 Mocha • 2 Cream • 1 Smoke • 2 Oatmeal</p>
-<p>Short Sleeve M: 1 Mocha • 1 Cream • 2 Oatmeal • 1 Smoke</p>
-
-</div>
 
 </div>
 
@@ -236,11 +220,11 @@ Only 36 shirts available from this fight camp
 
 <script>
 
-/* fight countdown */
+/* countdown */
 
 var fightDate = new Date("March 28, 2026 19:00:00").getTime();
 
-var x = setInterval(function() {
+setInterval(function() {
 
 var now = new Date().getTime();
 var distance = fightDate - now;
@@ -254,8 +238,7 @@ days + " days " + hours + " hours " + minutes + " minutes";
 
 },1000);
 
-
-/* buyer popup */
+/* popup */
 
 var buyers = [
 "Mike from New Jersey bought a Fight Camp Shirt",
@@ -265,17 +248,10 @@ var buyers = [
 ];
 
 function showPopup(){
-
 var popup=document.getElementById("buyer-popup");
-
 popup.innerHTML=buyers[Math.floor(Math.random()*buyers.length)];
-
 popup.style.display="block";
-
-setTimeout(function(){
-popup.style.display="none";
-},4000);
-
+setTimeout(function(){popup.style.display="none";},4000);
 }
 
 setInterval(showPopup,12000);
