@@ -56,23 +56,38 @@ color:#ff2a2a;
 margin-top:10px;
 }
 
-.buy-button{
-display:inline-block;
-margin-top:15px;
-padding:12px 25px;
-background:#ff2a2a;
-color:white;
-text-decoration:none;
-border-radius:6px;
-font-weight:bold;
-}
-
 .counter{
 background:#ff2a2a;
 padding:10px;
 border-radius:6px;
 font-weight:bold;
 margin-top:15px;
+}
+
+/* NEW COLOR GRID */
+
+.color-grid{
+display:grid;
+grid-template-columns:repeat(2, 1fr);
+gap:15px;
+margin-top:20px;
+}
+
+.color-card{
+background:rgba(0,0,0,0.9);
+padding:20px;
+border-radius:10px;
+text-decoration:none;
+color:white;
+font-weight:bold;
+border:2px solid transparent;
+transition:0.3s;
+}
+
+.color-card:hover{
+border:2px solid #ff2a2a;
+transform:scale(1.05);
+background:black;
 }
 
 /* TITLE + COUNTDOWN */
@@ -148,13 +163,11 @@ font-size:14px;
 <p>Amateur Fighter | Strength Coach</p>
 
 <nav>
-
 <a href="index.html">Home</a>
 <a href="coaching.html">Coaching</a>
 <a href="fights.html">Fights</a>
 <a href="merch.html">Merch</a>
 <a href="contact.html">Contact</a>
-
 </nav>
 
 </header>
@@ -182,11 +195,33 @@ Limited Fight Camp Release — While Supplies Last
 
 <h3>Choose Color</h3>
 
-<p><a href="mocha-shirt.html" class="buy-button">Mocha</a></p>
-<p><a href="cream-shirt.html" class="buy-button">Cream</a></p>
-<p><a href="oatmeal-shirt.html" class="buy-button">Oatmeal</a></p>
-<p><a href="black-shirt.html" class="buy-button">Black</a></p>
-<p><a href="smoke-shirt.html" class="buy-button">Smoke</a></p>
+<div class="color-grid">
+
+<a href="mocha-shirt.html" class="color-card">
+Mocha<br><small>Best Seller</small>
+</a>
+
+<a href="cream-shirt.html" class="color-card">
+Cream
+</a>
+
+<a href="oatmeal-shirt.html" class="color-card">
+Oatmeal
+</a>
+
+<a href="black-shirt.html" class="color-card">
+Black
+</a>
+
+<a href="smoke-shirt.html" class="color-card">
+Smoke
+</a>
+
+</div>
+
+<p style="margin-top:15px;color:#ff2a2a;font-weight:bold;">
+⚠️ Select your color to view sizes — limited stock per drop
+</p>
 
 </div>
 
