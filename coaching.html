@@ -33,8 +33,6 @@ text-decoration:none;
 font-size:18px;
 }
 
-/* SECTION */
-
 section{
 padding:60px 20px;
 }
@@ -91,14 +89,18 @@ font-weight:bold;
 cursor:pointer;
 }
 
-/* BOOKING */
+/* BOOK BUTTON */
 
-.booking{
-background:rgba(0,0,0,0.9);
-max-width:800px;
-margin:40px auto;
-padding:30px;
-border-radius:10px;
+.book-button{
+display:inline-block;
+margin-top:15px;
+padding:15px 30px;
+background:black;
+border:2px solid #ff2a2a;
+color:white;
+text-decoration:none;
+border-radius:6px;
+font-weight:bold;
 }
 
 /* FOOTER */
@@ -107,6 +109,20 @@ footer{
 margin-top:auto;
 padding:30px;
 background:black;
+}
+
+/* CHAT BUTTON */
+
+.chat-button{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#ff2a2a;
+color:white;
+padding:15px 20px;
+border-radius:50px;
+font-weight:bold;
+cursor:pointer;
 }
 
 </style>
@@ -133,20 +149,15 @@ background:black;
 <section>
 
 <h1>Online Coaching</h1>
-
 <p>Elite level training for serious individuals only.</p>
 
 <div class="program-box">
 
-<h2>🥊 Fighter Physique System</h2>
-
-<p>
-This is the exact system I use to prepare for fights — adapted for clients who want elite-level results.
-</p>
+<h2>Fighter Physique System</h2>
 
 <p>
 ✔ Custom Strength & Conditioning Program<br>
-✔ Fighter-Level Conditioning System<br>
+✔ Fighter-Level Conditioning<br>
 ✔ Personalized Nutrition Plan<br>
 ✔ Weekly Check-Ins<br>
 ✔ Direct Access To Me<br>
@@ -154,8 +165,6 @@ This is the exact system I use to prepare for fights — adapted for clients who
 </p>
 
 </div>
-
-<!-- PRICING -->
 
 <h2>Coaching Packages</h2>
 
@@ -173,54 +182,61 @@ This is the exact system I use to prepare for fights — adapted for clients who
 Serious clients only — limited spots available
 </p>
 
-<!-- APPLICATION FORM -->
+<!-- APPLICATION -->
 
 <div class="form-box">
 
 <h2>Apply For Coaching</h2>
 
-<form action="mailto:AMaurice_94@yahoo.com" method="post" enctype="text/plain">
+<form onsubmit="submitForm(event)">
 
-<input type="text" name="Name" placeholder="Full Name" required>
-<input type="email" name="Email" placeholder="Email Address" required>
-<input type="tel" name="Phone" placeholder="Phone Number" required>
+<input type="text" id="name" placeholder="Full Name" required>
+<input type="email" id="email" placeholder="Email" required>
+<input type="tel" id="phone" placeholder="Phone Number" required>
 
-<textarea name="Goals" placeholder="What are your fitness goals?" required></textarea>
+<textarea id="goals" placeholder="What are your goals?" required></textarea>
 
 <button type="submit">Submit Application</button>
 
 </form>
 
-</div>
-
-<!-- BOOK APPOINTMENT -->
-
-<div class="booking">
-
-<h2>📅 Book A Call</h2>
-
-<p>Serious about coaching? Book a call with me directly.</p>
-
-<!-- REPLACE LINK BELOW WITH YOUR CALENDLY -->
-
-<iframe src="https://calendly.com/YOUR-LINK"
-width="100%" height="500" frameborder="0"></iframe>
+<a class="book-button" href="https://calendly.com/YOUR-LINK">
+Book Consultation Call
+</a>
 
 </div>
 
 </section>
 
 <footer>
-
 <p>© 2026 Ashanti Maurice</p>
-
 </footer>
 
-<!-- CHATBOT (PASTE TIDIO SCRIPT BELOW WHEN READY) -->
+<!-- CHAT BUTTON -->
 
-<!-- Example:
-<script src="//code.tidio.co/yourcode.js" async></script>
--->
+<div class="chat-button" onclick="alert('Chat system coming soon — DM me on Instagram @Rx_Dolo for now')">
+Chat Now
+</div>
+
+<script>
+
+function submitForm(e){
+
+e.preventDefault();
+
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+let phone = document.getElementById("phone").value;
+let goals = document.getElementById("goals").value;
+
+let subject = "New Coaching Application";
+let body = `Name: ${name}%0AEmail: ${email}%0APhone: ${phone}%0AGoals: ${goals}`;
+
+window.location.href = `mailto:AMaurice_94@yahoo.com?subject=${subject}&body=${body}`;
+
+}
+
+</script>
 
 </body>
 </html>
