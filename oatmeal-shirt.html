@@ -35,25 +35,18 @@ padding:40px;
 .product img{
 width:100%;
 border-radius:10px;
+margin-top:10px;
 }
 
-.size-box{
-background:#222;
-margin:10px;
+.dropdown{
+margin:20px auto;
+width:80%;
 padding:12px;
+font-size:16px;
 border-radius:6px;
-cursor:pointer;
-transition:0.2s;
-}
-
-.size-box:hover{
-background:#ff2a2a;
-}
-
-.sold-out{
-background:#444;
-cursor:not-allowed;
-opacity:0.6;
+border:none;
+background:#222;
+color:white;
 }
 
 .buy-button{
@@ -65,12 +58,17 @@ color:white;
 text-decoration:none;
 border-radius:6px;
 font-weight:bold;
+cursor:pointer;
 }
 
-#selected-size{
-margin-top:15px;
+#selection{
+margin-top:20px;
 font-weight:bold;
 color:#ff2a2a;
+}
+
+.shirt-section{
+margin-top:30px;
 }
 
 </style>
@@ -97,26 +95,37 @@ color:#ff2a2a;
 
 <h2>Oatmeal Fight Camp Shirt</h2>
 
-<img src="oatmeal-shirt-photo.jpeg">
+<div class="shirt-section">
+<h3>Short Sleeve — $40</h3>
+<img src="oatmeal-short.jpeg">
+</div>
 
-<p>Short Sleeve $40</p>
-<p>Long Sleeve $50</p>
+<div class="shirt-section">
+<h3>Long Sleeve — $50</h3>
+<img src="oatmeal-long.jpeg">
+</div>
+
+<h3>Select Shirt Type</h3>
+
+<select id="shirtType" class="dropdown" onchange="updateSizes()">
+<option value="">Choose Type</option>
+<option value="short">Short Sleeve</option>
+<option value="long">Long Sleeve</option>
+</select>
 
 <h3>Select Size</h3>
 
-<div class="size-box" onclick="selectSize('M',2)">
-M — <span>2</span> left
-</div>
+<select id="shirtSize" class="dropdown" onchange="updateQuantity()">
+<option value="">Select shirt type first</option>
+</select>
 
-<div class="size-box" onclick="selectSize('L',2)">
-L — <span>2</span> left
-</div>
+<h3>Quantity</h3>
 
-<div class="size-box sold-out">
-XL — SOLD OUT
-</div>
+<select id="quantity" class="dropdown">
+<option value="">Select size first</option>
+</select>
 
-<p id="selected-size"></p>
+<p id="selection"></p>
 
 <a class="buy-button" onclick="checkout()">Buy This Shirt</a>
 
@@ -141,30 +150,84 @@ Color (Oatmeal)
 
 <script>
 
-let chosenSize = null;
+/* UPDATED INVENTORY */
 
-function selectSize(size,stock){
+const inventory = {
 
-if(stock <= 0){
-alert("This size is sold out");
-return;
+short:{
+M:2,
+L:2,
+XL:0
+},
+
+long:{
+M:1,
+L:1,
+XL:1
 }
 
-chosenSize = size;
+};
 
-document.getElementById("selected-size").innerHTML =
-"Selected Size: " + size;
+function updateSizes(){
+
+let type = document.getElementById("shirtType").value;
+let sizeDropdown = document.getElementById("shirtSize");
+
+sizeDropdown.innerHTML = "<option value=''>Choose Size</option>";
+
+for(let size in inventory[type]){
+
+let stock = inventory[type][size];
+
+let label = stock === 0 
+? `${size} — SOLD OUT` 
+: `${size} — ${stock} left`;
+
+sizeDropdown.innerHTML += 
+`<option value="${size}" ${stock===0?"disabled":""}>${label}</option>`;
+
+}
+
+document.getElementById("quantity").innerHTML = "<option>Select size first</option>";
+
+}
+
+function updateQuantity(){
+
+let type = document.getElementById("shirtType").value;
+let size = document.getElementById("shirtSize").value;
+let qtyDropdown = document.getElementById("quantity");
+
+qtyDropdown.innerHTML="";
+
+let max = inventory[type][size];
+
+for(let i=1;i<=max;i++){
+
+qtyDropdown.innerHTML += `<option value="${i}">${i}</option>`;
+
+}
 
 }
 
 function checkout(){
 
-if(chosenSize === null){
-alert("Please select a size first");
+let type = document.getElementById("shirtType").value;
+let size = document.getElementById("shirtSize").value;
+let qty = document.getElementById("quantity").value;
+
+if(type==="" || size==="" || qty===""){
+
+alert("Please select shirt type, size, and quantity");
 return;
+
 }
 
-window.location.href="checkout-oatmeal.html";
+document.getElementById("selection").innerHTML =
+"Selected: "+qty+" "+type+" sleeve / Size "+size;
+
+window.location.href =
+"checkout.html?shirt=Oatmeal&type="+type+"&size="+size+"&qty="+qty;
 
 }
 
