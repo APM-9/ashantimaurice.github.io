@@ -35,19 +35,18 @@ padding:40px;
 .product img{
 width:100%;
 border-radius:10px;
+margin-top:10px;
 }
 
-.size-box{
-background:#222;
-margin:10px;
+.dropdown{
+margin:20px auto;
+width:80%;
 padding:12px;
+font-size:16px;
 border-radius:6px;
-cursor:pointer;
-transition:0.2s;
-}
-
-.size-box:hover{
-background:#ff2a2a;
+border:none;
+background:#222;
+color:white;
 }
 
 .buy-button{
@@ -59,12 +58,17 @@ color:white;
 text-decoration:none;
 border-radius:6px;
 font-weight:bold;
+cursor:pointer;
 }
 
-#selected-size{
-margin-top:15px;
+#selection{
+margin-top:20px;
 font-weight:bold;
 color:#ff2a2a;
+}
+
+.shirt-section{
+margin-top:30px;
 }
 
 </style>
@@ -78,13 +82,11 @@ color:#ff2a2a;
 <h1>Ashanti Maurice</h1>
 
 <nav>
-
 <a href="index.html">Home</a>
 <a href="coaching.html">Coaching</a>
 <a href="fights.html">Fights</a>
 <a href="merch.html">Merch</a>
 <a href="contact.html">Contact</a>
-
 </nav>
 
 </header>
@@ -93,26 +95,37 @@ color:#ff2a2a;
 
 <h2>Mocha Fight Camp Shirt</h2>
 
-<img src="mocha-shirt-photo.jpeg">
+<div class="shirt-section">
+<h3>Short Sleeve — $40</h3>
+<img src="mocha-short.jpeg">
+</div>
 
-<p>Short Sleeve $40</p>
-<p>Long Sleeve $50</p>
+<div class="shirt-section">
+<h3>Long Sleeve — $50</h3>
+<img src="mocha-long.jpeg">
+</div>
+
+<h3>Select Shirt Type</h3>
+
+<select id="shirtType" class="dropdown" onchange="updateSizes()">
+<option value="">Choose Type</option>
+<option value="short">Short Sleeve</option>
+<option value="long">Long Sleeve</option>
+</select>
 
 <h3>Select Size</h3>
 
-<div class="size-box" onclick="selectSize('M',1)">
-M — <span id="stock-M">1</span> left
-</div>
+<select id="shirtSize" class="dropdown" onchange="updateQuantity()">
+<option value="">Select shirt type first</option>
+</select>
 
-<div class="size-box" onclick="selectSize('L',2)">
-L — <span id="stock-L">2</span> left
-</div>
+<h3>Quantity</h3>
 
-<div class="size-box" onclick="selectSize('XL',3)">
-XL — <span id="stock-XL">3</span> left
-</div>
+<select id="quantity" class="dropdown">
+<option value="">Select size first</option>
+</select>
 
-<p id="selected-size"></p>
+<p id="selection"></p>
 
 <a class="buy-button" onclick="checkout()">Buy This Shirt</a>
 
@@ -137,36 +150,84 @@ Color (Mocha)
 
 <script>
 
-let chosenSize = null;
+/* MOCHA INVENTORY */
 
-function selectSize(size,stock){
+const inventory = {
 
-if(stock <= 0){
+short:{
+M:0,
+L:1,
+XL:1
+},
 
-alert("This size is sold out");
+long:{
+M:0,
+L:2,
+XL:2
+}
 
-return;
+};
+
+function updateSizes(){
+
+let type = document.getElementById("shirtType").value;
+let sizeDropdown = document.getElementById("shirtSize");
+
+sizeDropdown.innerHTML = "<option value=''>Choose Size</option>";
+
+for(let size in inventory[type]){
+
+let stock = inventory[type][size];
+
+let label = stock === 0 
+? `${size} — SOLD OUT` 
+: `${size} — ${stock} left`;
+
+sizeDropdown.innerHTML += 
+`<option value="${size}" ${stock===0?"disabled":""}>${label}</option>`;
 
 }
 
-chosenSize = size;
+document.getElementById("quantity").innerHTML = "<option>Select size first</option>";
 
-document.getElementById("selected-size").innerHTML =
-"Selected Size: " + size;
+}
+
+function updateQuantity(){
+
+let type = document.getElementById("shirtType").value;
+let size = document.getElementById("shirtSize").value;
+let qtyDropdown = document.getElementById("quantity");
+
+qtyDropdown.innerHTML="";
+
+let max = inventory[type][size];
+
+for(let i=1;i<=max;i++){
+
+qtyDropdown.innerHTML += `<option value="${i}">${i}</option>`;
+
+}
 
 }
 
 function checkout(){
 
-if(chosenSize === null){
+let type = document.getElementById("shirtType").value;
+let size = document.getElementById("shirtSize").value;
+let qty = document.getElementById("quantity").value;
 
-alert("Please select a size first");
+if(type==="" || size==="" || qty===""){
 
+alert("Please select shirt type, size, and quantity");
 return;
 
 }
 
-window.location.href="checkout-mocha.html";
+document.getElementById("selection").innerHTML =
+"Selected: "+qty+" "+type+" sleeve / Size "+size;
+
+window.location.href =
+"checkout.html?shirt=Mocha&type="+type+"&size="+size+"&qty="+qty;
 
 }
 
