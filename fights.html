@@ -12,6 +12,11 @@ background:#111;
 color:white;
 margin:0;
 text-align:center;
+
+/* THIS FIXES FOOTER POSITION */
+min-height:100vh;
+display:flex;
+flex-direction:column;
 }
 
 /* HEADER */
@@ -44,12 +49,34 @@ border-radius:10px;
 margin-top:20px;
 }
 
-/* FOOTER (optional if you add later) */
+/* COUNTDOWN */
+
+.countdown{
+font-size:26px;
+font-weight:bold;
+color:#ff2a2a;
+margin-top:10px;
+}
+
+/* PPV BUTTON */
+
+.ppv-button{
+display:inline-block;
+margin-top:25px;
+padding:15px 30px;
+background:#ff2a2a;
+color:white;
+text-decoration:none;
+border-radius:6px;
+font-weight:bold;
+}
+
+/* FOOTER LOCKED TO BOTTOM */
 
 footer{
+margin-top:auto;
 padding:30px;
 background:black;
-margin-top:40px;
 }
 
 </style>
@@ -65,13 +92,11 @@ margin-top:40px;
 <p>Amateur Fighter | Strength Coach</p>
 
 <nav>
-
 <a href="index.html">Home</a>
 <a href="coaching.html">Coaching</a>
 <a href="fights.html">Fights</a>
 <a href="merch.html">Merch</a>
 <a href="contact.html">Contact</a>
-
 </nav>
 
 </header>
@@ -84,7 +109,20 @@ margin-top:40px;
 
 <p>Amateur Fight</p>
 
+<!-- COUNTDOWN -->
+<h3>Fight Countdown</h3>
+<div id="countdown" class="countdown"></div>
+
 <img src="IMG_1168.jpeg">
+
+<!-- PPV SECTION -->
+<h2 style="margin-top:40px;">Watch Live PPV</h2>
+
+<p>Missed out on tickets? Watch the fight live here.</p>
+
+<a class="ppv-button" href="https://tickets.avp.live/events/dead-serious-mma-promotions-presents-dead-serious-67-showboat-march28-2026" target="_blank">
+Watch Live Stream
+</a>
 
 </section>
 
@@ -93,6 +131,28 @@ margin-top:40px;
 <p>© 2026 Ashanti Maurice</p>
 
 </footer>
+
+<script>
+
+/* COUNTDOWN TIMER */
+
+var fightDate = new Date("March 28, 2026 19:00:00").getTime();
+
+setInterval(function(){
+
+var now = new Date().getTime();
+var distance = fightDate - now;
+
+var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+document.getElementById("countdown").innerHTML =
+days + " days " + hours + " hours " + minutes + " minutes";
+
+},1000);
+
+</script>
 
 </body>
 </html>
