@@ -82,13 +82,11 @@ margin-top:30px;
 <h1>Ashanti Maurice</h1>
 
 <nav>
-
 <a href="index.html">Home</a>
 <a href="coaching.html">Coaching</a>
 <a href="fights.html">Fights</a>
 <a href="merch.html">Merch</a>
 <a href="contact.html">Contact</a>
-
 </nav>
 
 </header>
@@ -152,16 +150,20 @@ Color (Smoke)
 
 <script>
 
+/* UPDATED SMOKE INVENTORY */
+
 const inventory = {
 
-long:{
-M:2,
-L:2
+short:{
+M:0,
+L:0,
+XL:0
 },
 
-short:{
+long:{
+M:1,
 L:1,
-XL:1
+XL:0
 }
 
 };
@@ -177,7 +179,12 @@ for(let size in inventory[type]){
 
 let stock = inventory[type][size];
 
-sizeDropdown.innerHTML += `<option value="${size}">${size} — ${stock} left</option>`;
+let label = stock === 0 
+? `${size} — SOLD OUT` 
+: `${size} — ${stock} left`;
+
+sizeDropdown.innerHTML += 
+`<option value="${size}" ${stock===0?"disabled":""}>${label}</option>`;
 
 }
 
@@ -212,7 +219,6 @@ let qty = document.getElementById("quantity").value;
 if(type==="" || size==="" || qty===""){
 
 alert("Please select shirt type, size, and quantity");
-
 return;
 
 }
