@@ -50,6 +50,12 @@ transition:0.2s;
 background:#ff2a2a;
 }
 
+.sold-out{
+background:#444;
+cursor:not-allowed;
+opacity:0.6;
+}
+
 .buy-button{
 display:inline-block;
 margin-top:25px;
@@ -78,13 +84,11 @@ color:#ff2a2a;
 <h1>Ashanti Maurice</h1>
 
 <nav>
-
 <a href="index.html">Home</a>
 <a href="coaching.html">Coaching</a>
 <a href="fights.html">Fights</a>
 <a href="merch.html">Merch</a>
 <a href="contact.html">Contact</a>
-
 </nav>
 
 </header>
@@ -93,23 +97,23 @@ color:#ff2a2a;
 
 <h2>Oatmeal Fight Camp Shirt</h2>
 
-<img src="black-shirt-photo.jpeg">
+<img src="oatmeal-shirt-photo.jpeg">
 
 <p>Short Sleeve $40</p>
 <p>Long Sleeve $50</p>
 
 <h3>Select Size</h3>
 
-<div class="size-box" onclick="selectSize('M',1)">
-M — <span id="stock-M">1</span> left
+<div class="size-box" onclick="selectSize('M',2)">
+M — <span>2</span> left
 </div>
 
 <div class="size-box" onclick="selectSize('L',2)">
-L — <span id="stock-L">2</span> left
+L — <span>2</span> left
 </div>
 
-<div class="size-box" onclick="selectSize('XL',3)">
-XL — <span id="stock-XL">3</span> left
+<div class="size-box sold-out">
+XL — SOLD OUT
 </div>
 
 <p id="selected-size"></p>
@@ -128,7 +132,7 @@ After payment please email your order details:
 Name<br>
 Shipping Address<br>
 Size<br>
-Color (Mocha)
+Color (Oatmeal)
 </p>
 
 <p>Email: AMaurice_94@yahoo.com</p>
@@ -142,11 +146,8 @@ let chosenSize = null;
 function selectSize(size,stock){
 
 if(stock <= 0){
-
 alert("This size is sold out");
-
 return;
-
 }
 
 chosenSize = size;
@@ -159,14 +160,11 @@ document.getElementById("selected-size").innerHTML =
 function checkout(){
 
 if(chosenSize === null){
-
 alert("Please select a size first");
-
 return;
-
 }
 
-window.location.href="checkout-mocha.html";
+window.location.href="checkout-oatmeal.html";
 
 }
 
