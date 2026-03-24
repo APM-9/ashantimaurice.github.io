@@ -13,7 +13,7 @@ color:white;
 margin:0;
 text-align:center;
 
-/* THIS FIXES FOOTER POSITION */
+/* FIX FOOTER */
 min-height:100vh;
 display:flex;
 flex-direction:column;
@@ -37,7 +37,7 @@ nav a:visited{
 color:#ff2a2a;
 }
 
-/* PAGE CONTENT */
+/* CONTENT */
 
 section{
 padding:50px 20px;
@@ -52,17 +52,24 @@ margin-top:20px;
 /* COUNTDOWN */
 
 .countdown{
-font-size:26px;
+font-size:28px;
 font-weight:bold;
 color:#ff2a2a;
 margin-top:10px;
+text-shadow:2px 2px 6px black;
 }
 
-/* PPV BUTTON */
+/* PPV */
+
+.ppv-title{
+margin-top:40px;
+color:#ff2a2a;
+text-shadow:2px 2px 6px black;
+}
 
 .ppv-button{
 display:inline-block;
-margin-top:25px;
+margin-top:20px;
 padding:15px 30px;
 background:#ff2a2a;
 color:white;
@@ -71,7 +78,7 @@ border-radius:6px;
 font-weight:bold;
 }
 
-/* FOOTER LOCKED TO BOTTOM */
+/* FOOTER */
 
 footer{
 margin-top:auto;
@@ -110,17 +117,19 @@ background:black;
 <p>Amateur Fight</p>
 
 <!-- COUNTDOWN -->
-<h3>Fight Countdown</h3>
+<h2>Fight Countdown</h2>
 <div id="countdown" class="countdown"></div>
 
 <img src="IMG_1168.jpeg">
 
 <!-- PPV SECTION -->
-<h2 style="margin-top:40px;">Watch Live PPV</h2>
+<h2 class="ppv-title">Limited Access Live Stream</h2>
 
 <p>Missed out on tickets? Watch the fight live here.</p>
 
-<a class="ppv-button" href="https://tickets.avp.live/events/dead-serious-mma-promotions-presents-dead-serious-67-showboat-march28-2026" target="_blank">
+<a class="ppv-button" 
+href="https://tickets.avp.live/events/dead-serious-mma-promotions-presents-dead-serious-67-showboat-march28-2026" 
+target="_blank">
 Watch Live Stream
 </a>
 
@@ -134,7 +143,7 @@ Watch Live Stream
 
 <script>
 
-/* COUNTDOWN TIMER */
+/* COUNTDOWN */
 
 var fightDate = new Date("March 28, 2026 19:00:00").getTime();
 
