@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>Smoke Fight Camp Shirt</title>
+<title>Oatmeal Fight Camp Shirt</title>
 
 <style>
 
@@ -82,29 +82,27 @@ margin-top:30px;
 <h1>Ashanti Maurice</h1>
 
 <nav>
-
 <a href="index.html">Home</a>
 <a href="coaching.html">Coaching</a>
 <a href="fights.html">Fights</a>
 <a href="merch.html">Merch</a>
 <a href="contact.html">Contact</a>
-
 </nav>
 
 </header>
 
 <div class="product">
 
-<h2>Smoke Fight Camp Shirt</h2>
+<h2>Oatmeal Fight Camp Shirt</h2>
 
 <div class="shirt-section">
 <h3>Short Sleeve — $40</h3>
-<img src="IMG_1237.jpeg">
+<img src="oatmeal-short.jpeg">
 </div>
 
 <div class="shirt-section">
 <h3>Long Sleeve — $50</h3>
-<img src="IMG_1227.jpeg">
+<img src="oatmeal-long.jpeg">
 </div>
 
 <h3>Select Shirt Type</h3>
@@ -143,7 +141,7 @@ After payment please email your order details:
 Name<br>
 Shipping Address<br>
 Size<br>
-Color (Smoke)
+Color (Oatmeal)
 </p>
 
 <p>Email: AMaurice_94@yahoo.com</p>
@@ -152,14 +150,18 @@ Color (Smoke)
 
 <script>
 
+/* UPDATED INVENTORY */
+
 const inventory = {
 
-long:{
+short:{
 M:2,
-L:2
+L:2,
+XL:0
 },
 
-short:{
+long:{
+M:1,
 L:1,
 XL:1
 }
@@ -177,7 +179,12 @@ for(let size in inventory[type]){
 
 let stock = inventory[type][size];
 
-sizeDropdown.innerHTML += `<option value="${size}">${size} — ${stock} left</option>`;
+let label = stock === 0 
+? `${size} — SOLD OUT` 
+: `${size} — ${stock} left`;
+
+sizeDropdown.innerHTML += 
+`<option value="${size}" ${stock===0?"disabled":""}>${label}</option>`;
 
 }
 
@@ -212,7 +219,6 @@ let qty = document.getElementById("quantity").value;
 if(type==="" || size==="" || qty===""){
 
 alert("Please select shirt type, size, and quantity");
-
 return;
 
 }
@@ -221,7 +227,7 @@ document.getElementById("selection").innerHTML =
 "Selected: "+qty+" "+type+" sleeve / Size "+size;
 
 window.location.href =
-"checkout.html?shirt=Smoke&type="+type+"&size="+size+"&qty="+qty;
+"checkout.html?shirt=Oatmeal&type="+type+"&size="+size+"&qty="+qty;
 
 }
 
