@@ -71,7 +71,7 @@ padding:30px;
 border-radius:10px;
 }
 
-input, textarea{
+input, textarea, select{
 width:90%;
 padding:12px;
 margin:10px 0;
@@ -134,7 +134,6 @@ cursor:pointer;
 <header>
 
 <h1>Ashanti Maurice</h1>
-
 <p>Amateur Fighter | Strength Coach</p>
 
 <nav>
@@ -177,25 +176,19 @@ This is the exact system I use to prepare for fights — adapted for clients who
 <h2>Coaching Packages</h2>
 
 <div class="price-box">
-
 <h3>🥊 6 Month Commitment</h3>
 <p>$2,400 Paid Upfront</p>
-
 <p>Built for serious individuals ready to transform.</p>
-
 </div>
 
 <div class="price-box">
-
 <h3>🥇 12 Month Commitment</h3>
 <p>$4,200 Paid Upfront</p>
-
 <p>For those committed to long-term elite results.</p>
-
 </div>
 
 <p style="color:#ff2a2a;font-weight:bold;">
-This is not for everyone — only serious applicants will be accepted.
+Application Required — Only serious clients will be accepted.
 </p>
 
 <!-- APPLICATION -->
@@ -204,21 +197,33 @@ This is not for everyone — only serious applicants will be accepted.
 
 <h2>Apply For Coaching</h2>
 
-<form onsubmit="submitForm(event)">
+<form action="https://formsubmit.co/AMaurice_94@yahoo.com" method="POST">
 
-<input type="text" id="name" placeholder="Full Name" required>
+<input type="hidden" name="_subject" value="🔥 New Coaching Application">
+<input type="hidden" name="_captcha" value="false">
 
-<input type="email" id="email" placeholder="Email Address" required>
+<input type="text" name="name" placeholder="Full Name" required>
 
-<input type="tel" id="phone" placeholder="Phone Number" required>
+<input type="email" name="email" placeholder="Email Address" required>
 
-<textarea id="goals" placeholder="What are your goals?" required></textarea>
+<input type="tel" name="phone" placeholder="Phone Number" required>
+
+<textarea name="goals" placeholder="What are your goals?" required></textarea>
+
+<select name="budget" required>
+<option value="">Select Your Investment Level</option>
+<option>$1,000+</option>
+<option>$2,500+</option>
+<option>$5,000+</option>
+</select>
 
 <button type="submit">Submit Application</button>
 
 </form>
 
-<a class="book-button" href="https://calendly.com/yourname/consultation">
+<h3>Or Book A Call Directly</h3>
+
+<a class="book-button" href="https://calendly.com/yourname/consultation" target="_blank">
 Book Consultation Call
 </a>
 
@@ -237,26 +242,6 @@ Book Consultation Call
 <div class="chat-button" onclick="window.location.href='https://instagram.com/Rx_Dolo'">
 Chat Now
 </div>
-
-<script>
-
-function submitForm(e){
-
-e.preventDefault();
-
-let name = document.getElementById("name").value;
-let email = document.getElementById("email").value;
-let phone = document.getElementById("phone").value;
-let goals = document.getElementById("goals").value;
-
-let subject = "New Coaching Application";
-let body = `Name: ${name}%0AEmail: ${email}%0APhone: ${phone}%0AGoals: ${goals}`;
-
-window.location.href = `mailto:AMaurice_94@yahoo.com?subject=${subject}&body=${body}`;
-
-}
-
-</script>
 
 </body>
 </html>
